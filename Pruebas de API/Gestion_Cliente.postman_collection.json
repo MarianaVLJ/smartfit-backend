@@ -162,6 +162,93 @@
         }
       },
       "response": []
+    },
+    {
+      "name": "Actualizar Socio",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Socio actualizado correctamente\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.plan).to.eql(\"Smart\");\r",
+              "    pm.expect(jsonData.mensaje).to.eql(\"Socio actualizado con éxito\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"plan\": \"Smart\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{project_host}}/socios/72345678",
+          "host": [
+            "{{project_host}}"
+          ],
+          "path": [
+            "socios",
+            "72345678"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Eliminar Socio",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Socio eliminado correctamente\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.mensaje).to.eql(\"Socio eliminado con éxito\");\r",
+              "    pm.expect(jsonData.dni).to.eql(\"72345678\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{project_host}}/socios/72345678",
+          "host": [
+            "{{project_host}}"
+          ],
+          "path": [
+            "socios",
+            "72345678"
+          ]
+        }
+      },
+      "response": []
     }
   ]
 }

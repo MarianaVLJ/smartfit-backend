@@ -35,3 +35,29 @@ def buscar_socio(dni):
         return jsonify(socio_encontrado), 200
     else:
         return jsonify({"error": "Socio no encontrado"}), 404
+    
+@cliente_bp.route('/socios/<string:dni>', methods=['PUT'])
+def actualizar_socio(dni):
+    datos = request.get_json()
+    if dni == "72345678":
+        respuesta = {
+            "dni": dni,
+            "nombres": "Juan Perez",
+            "plan": datos.get("plan", "Smart"),
+            "estado": "Activo",
+            "mensaje": "Socio actualizado con éxito"
+        }
+        return jsonify(respuesta), 200
+    else:
+        return jsonify({"error": "Socio no encontrado"}), 404
+    
+@cliente_bp.route('/socios/<string:dni>', methods=['DELETE'])
+def eliminar_socio(dni):
+    if dni == "72345678":
+        respuesta = {
+            "dni": dni,
+            "mensaje": "Socio eliminado con éxito"
+        }
+        return jsonify(respuesta), 200
+    else:
+        return jsonify({"error": "Socio no encontrado"}), 404
