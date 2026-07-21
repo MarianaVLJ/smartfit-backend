@@ -1,6 +1,7 @@
 from flask import Flask
 from src.infrastructure.database import db
 from src.presentation.controllers.cliente_controller import cliente_bp
+from src.presentation.controllers.suscripcion_controller import suscripcion_bp
 
 app = Flask(__name__)
 
@@ -13,6 +14,7 @@ db.init_app(app)
 
 # Registrar el Blueprint del módulo de clientes
 app.register_blueprint(cliente_bp)
+app.register_blueprint(suscripcion_bp)
 
 # Crear las tablas automáticamente al iniciar
 with app.app_context():
