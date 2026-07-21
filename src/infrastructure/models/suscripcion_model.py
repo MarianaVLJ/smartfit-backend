@@ -3,6 +3,8 @@ from src.infrastructure.database import db
 
 class Suscripcion(db.Model):
 
+    __tablename__ = 'suscripciones'
+
     id = db.Column(
         db.Integer,
         primary_key=True
@@ -10,6 +12,7 @@ class Suscripcion(db.Model):
 
     dni = db.Column(
         db.String(8),
+        db.ForeignKey('socios.dni'),
         nullable=False
     )
 
@@ -27,6 +30,8 @@ class Suscripcion(db.Model):
 
 class Contingencia(db.Model):
 
+    __tablename__ = 'contingencias'
+
     id = db.Column(
         db.Integer,
         primary_key=True
@@ -34,6 +39,7 @@ class Contingencia(db.Model):
 
     dni = db.Column(
         db.String(8),
+        db.ForeignKey('socios.dni'),
         nullable=False
     )
 
