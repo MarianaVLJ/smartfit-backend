@@ -1,0 +1,111 @@
+{
+  "info": {
+    "_postman_id": "9c25ad4d-fa04-41c2-9644-0c6eae6f0575",
+    "name": "Gestion_Cliente",
+    "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "56794982",
+    "_collection_link": "https://go.postman.co/collection/56794982-9c25ad4d-fa04-41c2-9644-0c6eae6f0575?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Crear Socio",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// GIVEN (Dado que) envío los datos del prospecto al endpoint de socios",
+              "// WHEN (Cuando) realizo la petición HTTP POST",
+              "// THEN (Entonces) recibo un código de estado 201 (Creado exitosamente)",
+              "pm.test(\"Status code is 201\", function () {",
+              "    pm.response.to.have.status(201);",
+              "});",
+              "",
+              "// AND (Y) los datos del socio creado son retornados correctamente",
+              "pm.test(\"Socio es agregado correctamente\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.nombres).to.eql(\"Juan Perez\");",
+              "    pm.expect(jsonData.estado).to.eql(\"Activo\");",
+              "});",
+              "",
+              "// AND (Y) el tiempo de respuesta es menor a 5 segundos",
+              "pm.test(\"Response time is less than 5s\", () => {",
+              "    pm.expect(pm.response.responseTime).to.be.below(5000);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"dni\": \"72345678\",\r\n    \"nombres\": \"Juan Perez\",\r\n    \"email\": \"juan.perez@email.com\",\r\n    \"plan\": \"Black\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{project_host}}/socios",
+          "host": [
+            "{{project_host}}"
+          ],
+          "path": [
+            "socios"
+          ]
+        },
+        "description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+      },
+      "response": []
+    },
+    {
+      "name": "Post data",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+              "});",
+              ""
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "postman-echo.com/post",
+          "host": [
+            "postman-echo",
+            "com"
+          ],
+          "path": [
+            "post"
+          ]
+        },
+        "description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+      },
+      "response": []
+    }
+  ]
+}
