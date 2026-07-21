@@ -106,6 +106,62 @@
         "description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
       },
       "response": []
+    },
+    {
+      "name": "Buscar Socio",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// GIVEN (Dado que) el socio con DNI 72345678 existe en el sistema\r",
+              "// WHEN (Cuando) realizo una petición GET al endpoint de búsqueda\r",
+              "// THEN (Entonces) recibo un código de estado 200 (OK)\r",
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "// AND (Y) la respuesta contiene los datos correctos del socio\r",
+              "pm.test(\"Los datos del socio corresponden al DNI consultado\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.dni).to.eql(\"72345678\");\r",
+              "    pm.expect(jsonData.nombres).to.eql(\"Juan Perez\");\r",
+              "    pm.expect(jsonData.estado).to.eql(\"Activo\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{project_host}}/socios/72345678",
+          "host": [
+            "{{project_host}}"
+          ],
+          "path": [
+            "socios",
+            "72345678"
+          ]
+        }
+      },
+      "response": []
     }
   ]
 }
