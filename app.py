@@ -2,6 +2,7 @@ from flask import Flask
 from src.infrastructure.database import db
 from src.presentation.controllers.cliente_controller import cliente_bp
 from src.presentation.controllers.suscripcion_controller import suscripcion_bp
+from src.infrastructure.models.suscripcion_model import Suscripcion, Contingencia
 
 app = Flask(__name__)
 
