@@ -1,9 +1,9 @@
-```markdown
+
 # SmartFit Backend API - Clean Architecture & DDD
 
 Backend desarrollado en Python utilizando **Flask** y **SQLAlchemy**, diseñado bajo los principios de **Clean Architecture** y **Domain-Driven Design (DDD)**. Este sistema gestiona el núcleo operativo para una cadena de gimnasios, abarcando desde el control perimetral y registro de socios hasta la adquisición de membresías y la gestión de accesos contingenciales por fallos biométricos.
 
----
+
 
 ## Enfoque Arquitectónico (DDD & Clean Architecture)
 
@@ -14,7 +14,7 @@ El proyecto implementa una separación estricta de responsabilidades en capas co
 3. **Capa de Infraestructura (`infrastructure/`):** Gestiona los detalles técnicos externos, incluyendo los modelos ORM de **SQLAlchemy**, la conexión a **SQLite** y la implementación de los repositorios de datos.
 4. **Capa de Presentación (`presentation/`):** Expone la interfaz de comunicación mediante controladores REST estructurados como **Blueprints de Flask**.
 
----
+
 
 ## Estructura del Repositorio
 
@@ -92,7 +92,7 @@ smartfit-backend/
 
 ---
 
-## ⚙️ Instrucciones de Instalación y Ejecución
+## Instrucciones de Instalación y Ejecución
 
 1. **Clonar el repositorio:**
 ```bash
@@ -129,7 +129,7 @@ python app.py
 
 ---
 
-## 🔌 Documentación de Endpoints del API REST
+##  Documentación de Endpoints del API REST
 
 ### 1. Módulo de Socios / Clientes
 
